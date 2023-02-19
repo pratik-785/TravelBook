@@ -1,0 +1,416 @@
+// {currentPosition === 0 &&
+//     <Formik
+//         initialValues={{
+//             title: '',
+//         }}
+//         validateOnMount={true}
+//         validationSchema={distanceFormValidationSchema}
+//         onSubmit={(values) => onSubmitDistanceForm(values)}
+//     >
+//         {({ handleChange, handleBlur, handleSubmit, values, touched, isValid, errors }) => (
+//             <View style={{ flex: 1, paddingHorizontal: 20 }}>
+//                 <ScrollView style={{ paddingVertical: 20 }}>
+//                     {/* For title */}
+//                     <View style={{ marginBottom: 5 }}>
+//                         <TextInputUI
+//                             title={'Title'}
+//                             onChangeText={handleChange('title')}
+//                             onBlur={handleBlur('title')}
+//                             value={values.title}
+//                             autoCapitalize='words'
+//                             placeHolder='Enter your title'
+//                         />
+//                     </View>
+//                     {(errors.title && touched.title) &&
+//                         <Text style={{ fontSize: 14, color: '#CD1818', fontWeight: 'bold' }}>{errors.title}</Text>
+//                     }
+
+//                     {/* For Type of trip */}
+//                     <View style={{ marginVertical: 10, borderColor: 'black', borderWidth: 1.2 }}>
+//                         <View style={{
+//                             height: 25, backgroundColor: 'white',
+//                             justifyContent: 'flex-end'
+//                         }}>
+//                             <Text style={{ paddingLeft: 10, fontWeight: 'bold', color: 'black' }}>Type of Trip</Text>
+//                         </View>
+//                         <View style={{
+//                             height: 40, flexDirection: 'row', backgroundColor: 'white',
+//                             justifyContent: 'center', alignItems: 'center',
+//                         }}>
+//                             <View style={{
+//                                 height: 40, width: '50%', flexDirection: 'row',
+//                                 justifyContent: 'center', alignItems: 'center',
+//                             }}>
+//                                 <RadioButton
+//                                     value={1}
+//                                     uncheckedColor='#CD1818'
+//                                     color='#CD1818'
+//                                     status={typeOfTrip === 1 ? 'checked' : 'unchecked'}
+//                                     onPress={() => setTypeOfTrip(1)}
+//                                 />
+//                                 <Text style={{ fontWeight: 'bold', color: 'black' }}>Return</Text>
+//                             </View>
+//                             <View style={{
+//                                 height: 40, width: '50%', flexDirection: 'row',
+//                                 justifyContent: 'center', alignItems: 'center',
+//                             }}>
+//                                 <RadioButton
+//                                     value={0}
+//                                     uncheckedColor='#CD1818'
+//                                     color='#CD1818'
+//                                     status={typeOfTrip === 0 ? 'checked' : 'unchecked'}
+//                                     onPress={() => setTypeOfTrip(0)}
+//                                 />
+//                                 <Text style={{ fontWeight: 'bold', color: 'black' }}>Drop</Text>
+//                             </View>
+//                         </View>
+//                     </View>
+
+//                     {/* For start location */}
+//                     <View style={{ marginTop: 10, marginBottom: 5 }}>
+//                         <TextInputUI
+//                             title={'Start location'}
+//                             onChangeText={handleChange('start')}
+//                             onBlur={handleBlur('start')}
+//                             value={values.start}
+//                             autoCapitalize='words'
+//                             placeHolder='Enter your starting location'
+//                         />
+//                     </View>
+//                     {(errors.start && touched.start) &&
+//                         <Text style={{ fontSize: 14, color: '#CD1818', fontWeight: 'bold' }}>{errors.start}</Text>
+//                     }
+
+//                     {/* For start date and time */}
+//                     <TouchableNativeFeedback onPress={() => setIsDatePickerVisible({ "startDateTime": true })}>
+//                         {startDateTime.length === 0 ?
+//                             <View style={{ marginVertical: 10, borderColor: 'black', borderWidth: 1.2 }}>
+//                                 <View style={{
+//                                     height: 25, backgroundColor: 'white',
+//                                     justifyContent: 'flex-end'
+//                                 }}>
+//                                     <Text style={{ paddingLeft: 10, fontWeight: 'bold', color: 'black' }}>Start Date and time</Text>
+//                                 </View>
+//                                 <View style={{
+//                                     height: 40, backgroundColor: 'white', justifyContent: 'center'
+//                                 }}>
+//                                     <Text style={{ paddingLeft: 10, fontSize: 16, color: 'grey' }}>Tap to select start date and time</Text>
+//                                 </View>
+//                             </View>
+//                             :
+//                             <View style={{ marginVertical: 10, borderColor: 'black', borderWidth: 1.2 }}>
+//                                 <View style={{
+//                                     height: 25, backgroundColor: 'white',
+//                                     justifyContent: 'flex-end'
+//                                 }}>
+//                                     <Text style={{ paddingLeft: 10, fontWeight: 'bold' }}>Start date and time</Text>
+//                                 </View>
+//                                 <View style={{
+//                                     height: 40, backgroundColor: 'white', justifyContent: 'center'
+//                                 }}>
+//                                     <Text style={{ paddingLeft: 10, fontSize: 16, color: 'black' }}>{startDateTime}</Text>
+//                                 </View>
+//                             </View>
+//                         }
+//                     </TouchableNativeFeedback>
+
+//                     {/* For destination */}
+//                     <View style={{ marginTop: 10, marginBottom: 5 }}>
+//                         <TextInputUI
+//                             title={'Destination'}
+//                             onChangeText={handleChange('destination')}
+//                             onBlur={handleBlur('destination')}
+//                             value={values.destination}
+//                             autoCapitalize='words'
+//                             placeHolder='Enter your destination'
+//                         />
+//                     </View>
+//                     {(errors.destination && touched.destination) &&
+//                         <Text style={{ fontSize: 14, color: '#CD1818', fontWeight: 'bold' }}>{errors.destination}</Text>
+//                     }
+
+//                     {/* For end date and time */}
+//                     <TouchableNativeFeedback onPress={() => setIsDatePickerVisible({ "endDateTime": true })}>
+//                         {endDateTime.length === 0 ?
+//                             <View style={{ marginVertical: 10, borderColor: 'black', borderWidth: 1.2 }}>
+//                                 <View style={{
+//                                     height: 25, backgroundColor: 'white',
+//                                     justifyContent: 'flex-end'
+//                                 }}>
+//                                     <Text style={{ paddingLeft: 10, fontWeight: 'bold', color: 'black' }}>End Date and time</Text>
+//                                 </View>
+//                                 <View style={{
+//                                     height: 40, backgroundColor: 'white', justifyContent: 'center'
+//                                 }}>
+//                                     <Text style={{ paddingLeft: 10, fontSize: 16, color: 'grey' }}>Tap to select end date and time</Text>
+//                                 </View>
+//                             </View>
+//                             :
+//                             <View style={{ marginVertical: 10, borderColor: 'black', borderWidth: 1.2 }}>
+//                                 <View style={{
+//                                     height: 25, backgroundColor: 'white',
+//                                     justifyContent: 'flex-end'
+//                                 }}>
+//                                     <Text style={{ paddingLeft: 10, fontWeight: 'bold' }}>End date</Text>
+//                                 </View>
+//                                 <View style={{
+//                                     height: 40, backgroundColor: 'white', justifyContent: 'center'
+//                                 }}>
+//                                     <Text style={{ paddingLeft: 10, fontSize: 16, color: 'black' }}>{endDateTime}</Text>
+//                                 </View>
+//                             </View>
+//                         }
+//                     </TouchableNativeFeedback>
+//                 </ScrollView>
+//                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+//                     <TouchableNativeFeedback onPress={handleSubmit}>
+//                         <View style={{
+//                             width: '100%', height: 50, borderRadius: 6,
+//                             marginVertical: 10, backgroundColor: '#CD1818',
+//                             justifyContent: 'center', alignItems: 'center'
+//                         }}>
+//                             <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>Next</Text>
+//                         </View>
+//                     </TouchableNativeFeedback>
+//                 </View>
+//             </View>
+//         )}
+//     </Formik>
+// }
+// {currentPosition === 1 &&
+//     <Formik
+//         initialValues={{
+//             totalDistance: ''
+//         }}
+//         validateOnMount={true}
+//         validationSchema={chargesFormValidationSchema}
+//         onSubmit={(values) => onSubmitChargesForm(values)}
+//     >
+//         {({ handleChange, handleBlur, handleSubmit, values, touched, isValid, errors }) => (
+//             <View style={{ flex: 1, paddingHorizontal: 20 }}>
+//                 <ScrollView style={{ paddingVertical: 20 }}>
+//                     {/* For total distance */}
+//                     <View style={{ marginTop: 10, marginBottom: 5 }}>
+//                         <TextInputUI
+//                             title={'Total Distance'}
+//                             onChangeText={handleChange('totalDistance')}
+//                             onBlur={handleBlur('totalDistance')}
+//                             value={values.totalDistance}
+//                             autoCapitalize='words'
+//                             placeHolder='Enter total distance'
+//                         />
+//                     </View>
+//                     {(errors.totalDistance && touched.totalDistance) &&
+//                         <Text style={{ fontSize: 14, color: '#CD1818', fontWeight: 'bold' }}>{errors.totalDistance}</Text>
+//                     }
+
+//                     {/* For charges per km */}
+//                     <View style={{ marginTop: 10, marginBottom: 5 }}>
+//                         <TextInputUI
+//                             title={'KM Charges'}
+//                             onChangeText={handleChange('kmCharges')}
+//                             onBlur={handleBlur('kmCharges')}
+//                             value={values.kmCharges}
+//                             autoCapitalize='words'
+//                             placeHolder='Enter charges per km'
+//                         />
+//                     </View>
+//                     {(errors.kmCharges && touched.kmCharges) &&
+//                         <Text style={{ fontSize: 14, color: '#CD1818', fontWeight: 'bold' }}>{errors.kmCharges}</Text>
+//                     }
+
+//                     {/* For Stay Charges */}
+//                     <View style={{ marginTop: 10, marginBottom: 5 }}>
+//                         <TextInputUI
+//                             title={'Stay Charges'}
+//                             onChangeText={handleChange('stayCharges')}
+//                             onBlur={handleBlur('stayCharges')}
+//                             value={values.stayCharges}
+//                             autoCapitalize='words'
+//                             placeHolder='Enter stay charges'
+//                         />
+//                     </View>
+//                     {(errors.stayCharges && touched.stayCharges) &&
+//                         <Text style={{ fontSize: 14, color: '#CD1818', fontWeight: 'bold' }}>{errors.stayCharges}</Text>
+//                     }
+
+//                     {/* For tip */}
+//                     <View style={{ marginTop: 10, marginBottom: 5 }}>
+//                         <TextInputUI
+//                             title={'Tip'}
+//                             onChangeText={handleChange('tip')}
+//                             onBlur={handleBlur('tip')}
+//                             value={values.tip}
+//                             autoCapitalize='words'
+//                             placeHolder='Enter tip'
+//                         />
+//                     </View>
+//                     {(errors.tip && touched.tip) &&
+//                         <Text style={{ fontSize: 14, color: '#CD1818', fontWeight: 'bold' }}>{errors.tip}</Text>
+//                     }
+
+//                     {/* For discount */}
+//                     <View style={{ marginTop: 10, marginBottom: 5 }}>
+//                         <TextInputUI
+//                             title={'Discount'}
+//                             onChangeText={handleChange('discount')}
+//                             onBlur={handleBlur('discount')}
+//                             value={values.discount}
+//                             autoCapitalize='words'
+//                             placeHolder='Enter discount'
+//                         />
+//                     </View>
+//                     {(errors.discount && touched.discount) &&
+//                         <Text style={{ fontSize: 14, color: '#CD1818', fontWeight: 'bold' }}>{errors.discount}</Text>
+//                     }
+//                 </ScrollView>
+//                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+//                     <TouchableNativeFeedback onPress={() => setCurrentPosition(currentPosition - 1)}>
+//                         <View style={{
+//                             width: '45%', height: 50, borderRadius: 6,
+//                             marginVertical: 10, backgroundColor: '#CD1818',
+//                             justifyContent: 'center', alignItems: 'center'
+//                         }}>
+//                             <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>Prev</Text>
+//                         </View>
+//                     </TouchableNativeFeedback >
+//                     <TouchableNativeFeedback onPress={handleSubmit}>
+//                         <View style={{
+//                             width: '45%', height: 50, borderRadius: 6,
+//                             marginVertical: 10, backgroundColor: '#CD1818',
+//                             justifyContent: 'center', alignItems: 'center'
+//                         }}>
+//                             <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>Next</Text>
+//                         </View>
+//                     </TouchableNativeFeedback>
+//                 </View>
+//             </View>
+//         )}
+//     </Formik>
+// }
+// {currentPosition === 2 &&
+//     <Formik
+//         initialValues={{
+//             dieselCost: ''
+//         }}
+//         validateOnMount={true}
+//         validationSchema={costFormValidationSchema}
+//         onSubmit={(values) => onSubmitCostForm(values)}
+//     >
+//         {({ handleChange, handleBlur, handleSubmit, values, touched, isValid, errors }) => (
+//             <View style={{ flex: 1, paddingHorizontal: 20 }}>
+//                 <ScrollView style={{ paddingVertical: 20 }}>
+//                     {/* For Diesel */}
+//                     <View style={{ marginTop: 10, marginBottom: 5 }}>
+//                         <TextInputUI
+//                             title={'Diesel cost'}
+//                             onChangeText={handleChange('dieselCost')}
+//                             onBlur={handleBlur('dieselCost')}
+//                             value={values.dieselCost}
+//                             autoCapitalize='words'
+//                             placeHolder='Enter diesel cost'
+//                         />
+//                     </View>
+//                     {(errors.dieselCost && touched.dieselCost) &&
+//                         <Text style={{ fontSize: 14, color: '#CD1818', fontWeight: 'bold' }}>{errors.dieselCost}</Text>
+//                     }
+
+//                     {/* For tolls */}
+//                     <View style={{ marginTop: 10, marginBottom: 5 }}>
+//                         <TextInputUI
+//                             title={'Tolls cost'}
+//                             onChangeText={handleChange('tolls')}
+//                             onBlur={handleBlur('tolls')}
+//                             value={values.tolls}
+//                             autoCapitalize='words'
+//                             placeHolder='Enter tolls'
+//                         />
+//                     </View>
+//                     {(errors.tolls && touched.tolls) &&
+//                         <Text style={{ fontSize: 14, color: '#CD1818', fontWeight: 'bold' }}>{errors.tolls}</Text>
+//                     }
+
+//                     {/* For Car Maintenance */}
+//                     <View style={{ marginTop: 10, marginBottom: 5 }}>
+//                         <TextInputUI
+//                             title={'Car Maintenance cost'}
+//                             onChangeText={handleChange('carMaintain')}
+//                             onBlur={handleBlur('carMaintain')}
+//                             value={values.carMaintain}
+//                             autoCapitalize='words'
+//                             placeHolder='Enter car maintenance cost'
+//                         />
+//                     </View>
+//                     {(errors.carMaintain && touched.carMaintain) &&
+//                         <Text style={{ fontSize: 14, color: '#CD1818', fontWeight: 'bold' }}>{errors.carMaintain}</Text>
+//                     }
+
+//                     {/* For Fines */}
+//                     <View style={{ marginTop: 10, marginBottom: 5 }}>
+//                         <TextInputUI
+//                             title={'Fines cost'}
+//                             onChangeText={handleChange('fines')}
+//                             onBlur={handleBlur('fines')}
+//                             value={values.fines}
+//                             autoCapitalize='words'
+//                             placeHolder='Enter fines cost'
+//                         />
+//                     </View>
+//                     {(errors.fines && touched.fines) &&
+//                         <Text style={{ fontSize: 14, color: '#CD1818', fontWeight: 'bold' }}>{errors.fines}</Text>
+//                     }
+
+//                     {/* For Miscellenous */}
+//                     <View style={{ marginTop: 10, marginBottom: 5 }}>
+//                         <TextInputUI
+//                             title={'Miscellenous cost'}
+//                             onChangeText={handleChange('misc')}
+//                             onBlur={handleBlur('misc')}
+//                             value={values.misc}
+//                             autoCapitalize='words'
+//                             placeHolder='Enter miscellenous cost'
+//                         />
+//                     </View>
+//                     {(errors.misc && touched.misc) &&
+//                         <Text style={{ fontSize: 14, color: '#CD1818', fontWeight: 'bold' }}>{errors.misc}</Text>
+//                     }
+
+//                     {/* For Commission */}
+//                     <View style={{ marginTop: 10, marginBottom: 5 }}>
+//                         <TextInputUI
+//                             title={'Commission'}
+//                             onChangeText={handleChange('commission')}
+//                             onBlur={handleBlur('commission')}
+//                             value={values.commission}
+//                             autoCapitalize='words'
+//                             placeHolder='Enter commission cost'
+//                         />
+//                     </View>
+//                     {(errors.commission && touched.commission) &&
+//                         <Text style={{ fontSize: 14, color: '#CD1818', fontWeight: 'bold' }}>{errors.commission}</Text>
+//                     }
+//                 </ScrollView>
+//                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+//                     <TouchableNativeFeedback onPress={() => setCurrentPosition(currentPosition - 1)}>
+//                         <View style={{
+//                             width: '45%', height: 50, borderRadius: 6,
+//                             marginVertical: 10, backgroundColor: '#CD1818',
+//                             justifyContent: 'center', alignItems: 'center'
+//                         }}>
+//                             <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>Prev</Text>
+//                         </View>
+//                     </TouchableNativeFeedback >
+//                     <TouchableNativeFeedback onPress={handleSubmit}>
+//                         <View style={{
+//                             width: '45%', height: 50, borderRadius: 6,
+//                             marginVertical: 10, backgroundColor: '#CD1818',
+//                             justifyContent: 'center', alignItems: 'center'
+//                         }}>
+//                             <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>Submit</Text>
+//                         </View>
+//                     </TouchableNativeFeedback>
+//                 </View>
+//             </View>
+//         )}
+//     </Formik>
+// }
